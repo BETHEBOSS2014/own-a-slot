@@ -3,34 +3,38 @@
 <head>
   <title>Own A Slot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
       color: white;
       text-align: center;
     }
 
     h1 {
-      margin-top: 30px;
-      font-size: 42px;
+      margin-top: 40px;
+      font-size: 48px;
+      letter-spacing: 1px;
     }
 
-    p {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    #counter {
+    .subtitle {
       font-size: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    .secure {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 25px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(25, 1fr);
-      gap: 6px;
+      grid-template-columns: repeat(20, 1fr);
+      gap: 8px;
       padding: 20px;
       max-width: 1200px;
       margin: auto;
@@ -39,28 +43,29 @@
     .slot {
       background: white;
       color: black;
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 15px;
       font-size: 12px;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.3s ease;
       min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
     }
 
     .slot:hover {
-      transform: scale(1.05);
-      background: gold;
-    }
-
-    .sold {
-      background: #ff4d4d;
+      transform: scale(1.08);
+      background: linear-gradient(135deg, #635bff, #8f7cff);
       color: white;
-      cursor: default;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
     }
 
     footer {
-      margin: 40px;
-      opacity: 0.8;
+      margin: 50px;
+      opacity: 0.6;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -68,32 +73,29 @@
 <body>
 
 <h1>🚀 Own A Slot</h1>
-<p>Buy a permanent ad slot for $1</p>
-<div id="counter">Slots Sold: 0</div>
+<div class="subtitle">Buy a permanent advertising slot for $1</div>
+<div class="secure">🔒 Secure checkout powered by Stripe</div>
 
 <div class="grid" id="grid"></div>
 
 <footer>
-  © 2026 Own A Slot
+  © 2026 Own A Slot. All rights reserved.
 </footer>
 
 <script>
   const grid = document.getElementById("grid");
-  const counter = document.getElementById("counter");
 
-  let totalSlots = 500;
-  let soldCount = 0;
+  const stripeLink = "https://buy.stripe.com/test_aFa5kC2Py7SC6Ai0mhcwg00"; // PASTE YOUR STRIPE PAYMENT LINK HERE
+
+  const totalSlots = 400;
 
   for (let i = 1; i <= totalSlots; i++) {
-    let slot = document.createElement("div");
+    const slot = document.createElement("div");
     slot.className = "slot";
-    slot.innerText = "Slot " + i;
+    slot.innerText = "Buy Slot " + i;
 
     slot.onclick = function () {
-      if (slot.classList.contains("sold")) return;
-
-      alert("This will redirect to Stripe payment ($1).");
-      // Later this becomes Stripe checkout link
+      window.open(stripeLink, "_blank");
     };
 
     grid.appendChild(slot);
