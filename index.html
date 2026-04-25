@@ -95,7 +95,7 @@
     slot.innerText = "Buy Slot " + i;
 
     slot.onclick = function () {
-      window.open(stripeLink, "_blank");
+      window.location.href = stripeLink;
     };
 
     grid.appendChild(slot);
