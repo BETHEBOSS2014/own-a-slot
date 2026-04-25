@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Own A Slot - Buy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: radial-gradient(circle at top, #1e1e2f, #0f0f1a);
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      padding: 60px 20px 30px 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #00f5ff, #7f5af0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      opacity: 0.8;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 15px;
+    }
+
+    .slot {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 25px 10px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-weight: 600;
+    }
+
+    .slot:hover {
+      transform: translateY(-5px);
+      background: linear-gradient(135deg, #00f5ff, #7f5af0);
+      color: black;
+    }
+
+    footer {
+      padding: 40px;
+      opacity: 0.5;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Own A Slot</h1>
+  <div class="subtitle">Secure your permanent advertising space for $1</div>
+</header>
+
+<div class="container">
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer>
+  © 2026 Own A Slot — Powered by Stripe
+</footer>
+
+<script>
+
+const stripeLink = "PASTE_YOUR_STRIPE_LINK_HERE";
+const totalSlots = 400;
+
+const grid = document.getElementById("grid");
+
+for (let i = 1; i <= totalSlots; i++) {
+  const slot = document.createElement("div");
+  slot.className = "slot";
+  slot.innerText = "Slot " + i;
+
+  slot.onclick = function() {
+    window.location.href = stripeLink;
+  };
+
+  grid.appendChild(slot);
+}
+
+</script>
+
+</body>
+</html>
